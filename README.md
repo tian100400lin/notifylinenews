@@ -1,19 +1,24 @@
 # notify-line-dev-news
-[LINE Developer news](https://developers.line.biz/ja/news/) が更新された時にLINE Notifyで通知するスクリプト
+[LINE Developer news] 
 
-cron設定すると最新情報を素早くLINEで通知できる。
+If there is a new post, it will be sent as a line message.
 
 ## Setup
+
+(https://notify-bot.line.me/my/)
+
 ```bash
 $ pip install -r requirements.txt
 $ cp .env.sample .env
 ```
 
 ## Step1
-[こちら](https://notify-bot.line.me/my/)からLINEにログインして、通知したいトークルームを選び、トークン発行。
 
-**Setup** で作成した`.env`の`NOTIFY_TOKEN`にトークンを記載。  
-データベース名を変更したい時は`DB_FILE_PATH`を変更。
+(Log in to LINE at https://notify-bot.line.me/my/) and select the talk room you want to notify and issue a token.
+
+Created with Setup.Write tokens in NOTIFY_TOKEN in env.  
+
+Change 'DB_FILE_PATH' when you want to change the database name.
 
 ```bash
 DB_FILE_PATH="news.sqlite"
@@ -21,20 +26,21 @@ NOTIFY_TOKEN="iEET2ScqVhKrt45ZTXXXXXXXXXXXX"
 ```
 
 ## Step2
-実行する。
+
+Practice
+
 ```bash
 $ python3 notice.py
 ```
 
 ## 注意
-初回実行はデータベースにデータが無いので、連続して沢山の通知が来る。  
-そのため、`./news_notify/news/config.py`に`NOTIFY_SPAN`を設けてある。  
-この値を書き換えると、指定した秒数ごとに通知を行うことができる。
+
+Since the first run does not have data in the previous database, there are many consecutive notifications.
+
+Because of this, 'NOTIFY_SPAN' is installed on './news_notify/news/config.py'.
+
+Changing this value allows notifications to be made in seconds specified.
 
 ```python
 NOTIFY_SPAN = 0
 ```
-
-## Lint
-- black
-- flake8
