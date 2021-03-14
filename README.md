@@ -33,7 +33,7 @@ Practice
 $ python3 notice.py
 ```
 
-## 注意
+## a predominant idea
 
 Since the first run does not have data in the previous database, there are many consecutive notifications.
 
